@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blinkit Landing Page Clone</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: white;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 5%;
+    gap: 20px;
+    border-bottom: 1px solid #eee;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #f7c600;
+}
+
+.location h3 {
+    font-size: 16px;
+}
+
+.location p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3;
+    padding: 14px;
+    border-radius: 10px;
+    flex: 1;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.login {
+    background: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cart {
+    background: #0c831f;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-banner {
+    width: 90%;
+    min-height: 250px;
+    margin: 25px auto;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 35px;
+    background:
+    linear-gradient(90deg, rgba(0,70,25,.9), rgba(0,70,25,.1)),
+    url("https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400")
+    center/cover;
+}
+
+.banner-content {
+    color: white;
+    max-width: 450px;
+}
+
+.banner-content h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.banner-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.banner-content button {
+    background: white;
+    color: #0c831f;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.promotions {
+    width: 90%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.promo-card {
+    min-height: 170px;
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.pharmacy {
+    background: #b8eeee;
+}
+
+.pet {
+    background: #ffe5a9;
+}
+
+.baby {
+    background: #f5dfe8;
+}
+
+.promo-card h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.promo-card p {
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.promo-card button {
+    background: #0c831f;
+    color: white;
+    padding: 9px 13px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.promo-card img {
+    width: 95px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.categories {
+    width: 90%;
+    margin: 45px auto;
+}
+
+.categories h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 22px 15px;
+}
+
+.category {
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+}
+
+.category img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.category p {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 9px;
+}
+
+footer {
+    background: #f7f7f7;
+    padding: 40px 5% 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer-section h2 {
+    color: #f7c600;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 17px;
+}
+
+.footer-section p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #666;
+}
+
+.footer-section a {
+    display: block;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.footer-section a:hover {
+    color: #0c831f;
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    border-top: 1px solid #ddd;
+    padding-top: 18px;
+    text-align: center;
+    font-size: 13px;
+}
+
+
+@media(max-width: 900px) {
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        order: 5;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .promotions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 600px) {
+
+    header {
+        padding: 15px 4%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .location h3 {
+        font-size: 13px;
+    }
+
+    .location p {
+        font-size: 10px;
+    }
+
+    .login {
+        font-size: 13px;
+    }
+
+    .cart {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .main-banner {
+        width: 92%;
+        min-height: 200px;
+        padding: 20px;
+    }
+
+    .banner-content h1 {
+        font-size: 23px;
+    }
+
+    .banner-content p {
+        font-size: 13px;
+    }
+
+    .promotions {
+        width: 92%;
+        grid-template-columns: 1fr;
+    }
+
+    .promo-card {
+        min-height: 145px;
+    }
+
+    .categories {
+        width: 92%;
+    }
+
+    .categories h2 {
+        font-size: 20px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 12px;
+    }
+
+    .category p {
+        font-size: 12px;
+    }
+
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px 5%;
+        gap: 25px 15px;
+    }
+
+    .footer-section h3 {
+        font-size: 15px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+        font-size: 12px;
+    }
+
+    .copyright {
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 350px) {
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">blinkit</div>
+
+    <div class="location">
+        <h3>Delivery in 17 minutes</h3>
+        <p>Home - Your Location ▼</p>
+    </div>
+
+    <div class="search-box">
+        🔍
+        <input type="text" placeholder="Search for products">
+    </div>
+
+    <button class="login">Login</button>
+
+    <button class="cart">🛒 My Cart</button>
+
+</header>
+<section class="main-banner">
+
+    <div class="banner-content">
+        <h1>Stock up on daily essentials</h1>
+
+        <p>
+            Get farm-fresh goodness & a range of exotic
+            fruits, vegetables, eggs & more
+        </p>
+
+        <button>Shop Now</button>
+    </div>
+
+</section>
+
+<section class="promotions">
+
+    <div class="promo-card pharmacy">
+
+        <div>
+            <h2>Pharmacy at<br>your doorstep!</h2>
+            <p>Order medicines easily</p>
+            <button>Order Now</button>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=300" alt="Pharmacy">
+
+    </div>
+
+    <div class="promo-card pet">
+
+        <div>
+            <h2>Pet care supplies<br>at your door</h2>
+            <p>Food, toys & more</p>
+            <button>Order Now</button>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=300" alt="Pet Care">
+
+    </div>
+
+    <div class="promo-card baby">
+
+        <div>
+            <h2>No time for<br>diaper runs?</h2>
+            <p>Baby products delivered</p>
+            <button>Order Now</button>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=300" alt="Baby Care">
+
+    </div>
+
+</section>
+
+<section class="categories">
+
+    <h2>Shop by Categories</h2>
+
+    <div class="category-grid">
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=250" alt="Vegetables">
+            <p>Vegetables</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=250" alt="Fruits">
+            <p>Fresh Fruits</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=250" alt="Milk">
+            <p>Dairy & Milk</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=250" alt="Beverages">
+            <p>Cold Drinks</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=250" alt="Snacks">
+            <p>Snacks</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=250" alt="Tea">
+            <p>Tea & Coffee</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484e3?w=250" alt="Bakery">
+            <p>Bakery</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=250" alt="Eggs">
+            <p>Eggs & Meat</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=250" alt="Personal Care">
+            <p>Personal Care</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=250" alt="Household">
+            <p>Household Items</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=250" alt="Water">
+            <p>Water & Drinks</p>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=250" alt="Daily Essentials">
+            <p>Daily Essentials</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-section">
+        <h2>blinkit</h2>
+        <p>India's last minute grocery delivery app.</p>
+        <p>Fresh products delivered to your doorstep.</p>
+    </div>
+
+    <div class="footer-section">
+        <h3>Useful Links</h3>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="footer-section">
+        <h3>Categories</h3>
+        <a href="#">Fruits & Vegetables</a>
+        <a href="#">Dairy Products</a>
+        <a href="#">Snacks</a>
+        <a href="#">Personal Care</a>
+    </div>
+
+    <div class="footer-section">
+        <h3>Download App</h3>
+        <p>Get the Blinkit app on your phone.</p>
+        <p>Google Play | App Store</p>
+
+        <h3>Follow Us</h3>
+        <p>Instagram | Facebook | Twitter</p>
+    </div>
+
+    <div class="copyright">
+        <p>© 2026 Blinkit Clone | Created using HTML & CSS</p>
+    </div>
+
+</footer>
+
+</body>
+</html>
